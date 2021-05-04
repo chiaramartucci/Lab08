@@ -43,8 +43,9 @@ public class Model {
 			}
 			
 			else {
-				this.grafo.addEdge(aeroportiMap.get(c.getAirportOrigine().getId()), aeroportiMap.get(c.getAirportDestinazione().getId()));
+				Graphs.addEdgeWithVertices(this.grafo, aeroportiMap.get(c.getAirportOrigine().getId()), aeroportiMap.get(c.getAirportDestinazione().getId()), c.getPeso());
 			}
+			// aeroportiMap.get(c.getAirportOrigine().getId()), aeroportiMap.get(c.getAirportDestinazione().getId())
 			
 		}
 	}
@@ -61,7 +62,7 @@ public class Model {
 		return this.grafo.edgeSet().size();
 	}
 	
-	public List<Connessione> stampa (){
+	public List<Connessione> getConnessioniGiuste (){
 		List<Connessione> result = new ArrayList<>();
 		for(DefaultWeightedEdge e: this.grafo.edgeSet()) {
 			Connessione c = new Connessione (this.grafo.getEdgeSource(e), this.grafo.getEdgeTarget(e), this.grafo.getEdgeWeight(e));
@@ -69,5 +70,7 @@ public class Model {
 		}
 		return result;
 	}
+	
+	
 	
 }

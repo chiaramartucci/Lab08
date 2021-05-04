@@ -7,6 +7,7 @@ package it.polito.tdp.extflightdelays;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.extflightdelays.model.Connessione;
 import it.polito.tdp.extflightdelays.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +45,10 @@ public class FXMLController {
     	
     	txtResult.appendText("il numero di vertici è: "+model.loadAllAirports().size()+"\n");
     	txtResult.appendText("il numero di archi è: "+model.getNArchi()+"\n");
-    	txtResult.appendText(model.stampa().toString());
+    	
+    	for (Connessione c : model.getConnessioniGiuste()) {
+    		txtResult.appendText(c.toString());
+    	}
    
     	
     }
